@@ -160,6 +160,9 @@ let eventMixin = {
    * @this {Event}
    */
   get target() {
+    if (!this.currentTarget) {
+      return this['__target'];
+    }
     return retarget(this.currentTarget, this.composedPath());
   },
 
